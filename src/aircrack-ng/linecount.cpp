@@ -73,23 +73,22 @@ unsigned int FileRead(istream & is, vector<char> & buff)
 
 unsigned int countBuffer(const vector<char> & buff, int bufsize)
 {
-	int lines = 0, i = 4;
+	int lines = 0, i = 0;
 	const char * p = &buff[0];
 	unsigned short charct = 0;
 
-	bufsize--;
-
-	while (i++ < bufsize)
+	while (i < bufsize)
 	{
 		if (p[i] == '\n')
 		{
 			if (charct > 7) lines++;
 
 			i += 1;
-			charct = 1;
+			charct = 0;
 			continue;
 		}
 
+		i++;
 		charct++;
 	}
 
